@@ -1,0 +1,19 @@
+
+local function flingPlayer()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    
+    -- Generate a random direction
+    local randomDirection = Vector3.new(
+        math.random(-1, 1),
+        math.random(0, 1),  -- Ensure upward force
+        math.random(-1, 1)
+    ).unit
+
+    -- Apply a large force to fling the player
+    humanoidRootPart.Velocity = randomDirection * 500
+end
+
+-- Execute the fling function
+flingPlayer()
